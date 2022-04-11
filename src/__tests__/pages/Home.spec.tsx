@@ -79,7 +79,7 @@ describe('Home', () => {
     };
 
     mockedPrismic.mockReturnValue({
-      query: () => {
+      get: () => {
         return Promise.resolve(mockedQueryReturn);
       },
     });
@@ -107,6 +107,12 @@ describe('Home', () => {
   });
 
   it('should be able to return prismic posts documents using getStaticProps', async () => {
+    mockedPrismic.mockReturnValue({
+      get: () => {
+        return Promise.resolve(mockedQueryReturn);
+      },
+    });
+
     const postsPaginationReturn = mockedQueryReturn;
 
     const getStaticPropsContext: GetStaticPropsContext<ParsedUrlQuery> = {};
